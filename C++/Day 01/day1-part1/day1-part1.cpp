@@ -7,15 +7,16 @@ int main()
 	std::fstream out("output.out", std::fstream::out);
 
 	std::vector<int> v(std::istream_iterator<int>{in}, {});
+	int size{ (int)v.size() };
 
-	for (int i = 0; i < v.size() - 1; i++)
+	for (int i = 0; i < size - 1; i++)
 	{
-		for (int j = i + 1; j < v.size(); j++)
+		for (int j = i + 1; j < size; j++)
 		{
 			if (v[i] + v[j] == 2020)
 			{
 				out << v[i] * v[j];
-				i = v.size(), j = v.size();
+				i = j = size;
 			}
 		}
 	}

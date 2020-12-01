@@ -12,6 +12,7 @@ for (let i = 0; i < input.length - 2; i++) {
           "output.out",
           (input[i] * input[j] * input[k]).toString()
         );
+        i = j = k = input.length;
       }
     }
   }
