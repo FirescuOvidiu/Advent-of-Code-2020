@@ -10,7 +10,7 @@ int main()
 	int lowest{ 0 }, highest{ 0 }, countPasswords{ 0 };
 	char letter{}, aux{};
 
-	while (in >> lowest >> letter >> highest >> letter >> aux >> password)
+	while (in >> lowest >> aux >> highest >> letter >> aux >> password)
 	{
 		if (((password[lowest - 1] == letter) || (password[highest - 1] == letter))
 			&& (password[lowest - 1] != password[highest - 1]))

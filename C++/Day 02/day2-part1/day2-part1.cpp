@@ -10,22 +10,9 @@ int main()
 	int lowest{ 0 }, highest{ 0 }, countPasswords{ 0 }, countLetters{ 0 };
 	char letter{}, aux{};
 
-	while (in >> lowest >> letter >> highest >> letter >> aux >> password)
+	while (in >> lowest >> aux >> highest >> letter >> aux >> password)
 	{
 		countLetters = std::count(std::begin(password), std::end(password), letter);
-
-		if (password[lowest-1] == letter)
-		{
-			//countLetters++;
-		}
-		if (password[highest - 1] == letter)
-		{
-			//countLetters++;
-		}
-		if (countLetters == 1)
-		{
-					//	countPasswords++;
-		}
 
 		if ((countLetters >= lowest) && (countLetters <= highest))
 		{
