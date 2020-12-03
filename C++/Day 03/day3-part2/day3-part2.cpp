@@ -24,14 +24,8 @@ int main()
 	std::fstream in("input.in", std::fstream::in);
 	std::fstream out("output.out", std::fstream::out);
 
-	std::vector<std::string> map;
-	std::string line;
+	std::vector<std::string> map(std::istream_iterator<std::string>{in}, {});
 	long long multiply{ 1 };
-
-	while (std::getline(in, line))
-	{
-		map.push_back(line);
-	}
 
 	multiply *= countTrees(map, 1, 1);
 	multiply *= countTrees(map, 3, 1);
