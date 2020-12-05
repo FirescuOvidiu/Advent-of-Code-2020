@@ -19,38 +19,35 @@ int main()
 			switch (c)
 			{
 			case 'F':
-				f -= std::ceil((f - b) / 2);
+				f -= (f - b) / 2;
 				break;
 
 			case 'B':
-				b += std::ceil((f - b) / 2);
+				b += (f - b) / 2;
 				break;
 
 			case 'L':
-				l -= std::ceil((l - r) / 2);
+				l -= (l - r) / 2;
 				break;
 
 			case 'R':
-				r += std::ceil((l - r) / 2);
+				r += (l - r) / 2;
 				break;
 			}
 		}
 
-		row = std::min(b, f);
-		column = std::min(l, r);
+		row = std::min(std::ceil(b), std::ceil(f));
+		column = std::min(std::ceil(l), std::ceil(r));
 		id = row * 8 + column;
 		seatID.insert(id);
 	}
 
-	for (auto id = seatID.begin(); id != seatID.end(); id++)
-	{
-		auto nextId = std::next(id);
-		if ((nextId != seatID.end()) && (abs(*id - *nextId) == 2))
+	auto result = std::adjacent_find(seatID.begin(), seatID.end(), [](const auto& first, const auto& second)
 		{
-			out << std::min(*id, *nextId) + 1;
-			break;
-		}
-	}
+			return abs(first - second) == 2;
+		});
+
+	out << std::min(*result, *std::next(result)) + 1;
 
 	in.close();
 	out.close();
