@@ -1,6 +1,23 @@
 #include "../../AOCHeaders/stdafx.h"
 
 
+bool checkProperty(const std::vector<long long>& v,  const int i, const int numbersBefore)
+{
+	for (int j = i - numbersBefore; j < i - 1; j++)
+	{
+		for (int k = j + 1; k < i; k++)
+		{
+			if (v[j] + v[k] == v[i])
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
+}
+
+
 int main()
 {
 	std::fstream in("input.in", std::fstream::in);
@@ -12,20 +29,7 @@ int main()
 
 	for (int i = numbersBefore; i < v.size(); i++)
 	{
-		check = true;
-
-		for (int j = i - numbersBefore; j < i - 1; j++)
-		{
-			for (int k = j + 1; k < i; k++)
-			{
-				if (v[j] + v[k] == v[i])
-				{
-					check = false;
-				}
-			}
-		}
-
-		if (check)
+		if (checkProperty(v,i, numbersBefore))
 		{
 			out << v[i];
 			break;
